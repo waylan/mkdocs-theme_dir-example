@@ -1,0 +1,4 @@
+site_name: theme_dir Example
+
+theme: mkdocs
+theme_dir: custom_theme
