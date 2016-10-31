@@ -12,7 +12,7 @@ To test this example, clone it and run `mkdocs serve` from the root directory.
 Then click on the image on the homepage in your browser.
 
 Note that this example requires at least **MkDocs version 0.16**. Earlier
-versions to not support most of the mechanisms used here.
+versions do not support most of the mechanisms used here.
 
 It should also be noted that this example is using the Lightbox for Bootstrap
 Plugin as the `mkdocs` theme is built on Bootswatch, a Bootstrap wrapper. If you
@@ -31,7 +31,7 @@ theme_dir: custom_theme
 ```
 
 Note that we need to explicitly define the theme which we are customizing,
-(via `theme: mkdocs') otherwise MkDocs assumes that the `theme_dir` is replacing
+(via `theme: mkdocs`) otherwise MkDocs assumes that the `theme_dir` is replacing
 the entire theme.
 
 # Adding media files
@@ -66,8 +66,8 @@ Then, via [template inheritence], we define blocks to override the default
 blocks defined in the parent theme. For example, we need the CSS file added
 above to be listed in the `styles` block along with the other CSS files.
 However, we don't want to remove the other stylesheet links defined in that
-block. However, the default behavior is for a block to replace the parent block
-of the same name. Therefore we have two options:
+block. Nevertheless, the default behavior is for a block to replace the parent 
+block of the same name. Therefore we have two options:
 
 1. Redefine every link in the parent `styles` block.
 2. Use a [super block] to have the parent `styles` included in our new block.
