@@ -1,18 +1,20 @@
-# An example MkDocs custom theme_dir
+# An example MkDocs custom theme
 
-The is a sample [MkDocs] project with a custom [theme_dir] defined to add a
+The is a sample [MkDocs] project with a [custom_dir] defined to add a
 lightbox feature to the default `mkdocs` theme for displaying images in a
 lightbox using the [Lightbox for Boostrap Plugin][lb].
 
 [MkDocs]: http://www.mkdocs.org/
-[theme_dir]: http://www.mkdocs.org/user-guide/configuration/#theme_dir
+[custom_dir]: http://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 [lb]: http://ashleydw.github.io/lightbox/
 
 To test this example, clone it and run `mkdocs serve` from the root directory.
 Then click on the image on the homepage in your browser.
 
-Note that this example requires at least **MkDocs version 0.16**. Earlier
-versions do not support most of the mechanisms used here.
+Note that this example requires at least **MkDocs version 0.17**. Earlier
+versions do not support most of the mechanisms used here. See [revision 915e1ac]
+(https://github.com/waylan/mkdocs-theme_dir-example/tree/915e1acf4fc912f9371bcabfc9e095fec9bf00ec)
+of this guide if you're working with MkDocs 0.16.
 
 It should also be noted that this example is using the Lightbox for Bootstrap
 Plugin as the `mkdocs` theme is built on Bootswatch, a Bootstrap wrapper. If you
@@ -26,8 +28,9 @@ example, the directory is unimaginatively named `custom_theme`. Therefore,
 the `mkdocs.yml` config file defines its theme like this:
 
 ```yaml
-theme: mkdocs
-theme_dir: custom_theme
+theme:
+  name: mkdocs
+  custom_dir: custom_theme
 ```
 
 Note that we need to explicitly define the theme which we are customizing,
@@ -36,8 +39,10 @@ the entire theme.
 
 # Adding media files
 
-The CSS and JavaScript files have been copied from version 4.0.2 of Lightbox for
-Bootstrap (as MkDocs uses Bootsrap version 3).
+The CSS and JavaScript files have been copied from [version 4.0.2 of Lightbox
+for Bootstrap](https://github.com/ashleydw/lightbox/tree/v4.0.2/dist). It's 
+important to use version 4.0.2 as more recent versions require Bootstrap 4
+(MkDocs uses Bootstrap version 3).
 
 ```
 custom_theme/
@@ -47,7 +52,7 @@ custom_theme/
         ekko-ligthbox.min.js
 ```
 
-While theose files technically do not *need* to go in the `css/` and `js/`
+While those files technically do not *need* to go in the `css/` and `js/`
 subdirectories, that is how files are organized in the parent `mkdocs` theme, so
 we've done the same to keep things neat and tidy.
 
@@ -62,7 +67,7 @@ the base template:
 {% extends "base.html" %}
 ```
 
-Then, via [template inheritence], we define blocks to override the default
+Then, via [template inheritance], we define blocks to override the default
 blocks defined in the parent theme. For example, we need the CSS file added
 above to be listed in the `styles` block along with the other CSS files.
 However, we don't want to remove the other stylesheet links defined in that
@@ -72,7 +77,7 @@ block of the same name. Therefore we have two options:
 1. Redefine every link in the parent `styles` block.
 2. Use a [super block] to have the parent `styles` included in our new block.
 
-[template inheritence]: http://jinja.pocoo.org/docs/dev/templates/#template-inheritance
+[template inheritance]: http://jinja.pocoo.org/docs/dev/templates/#template-inheritance
 [super block]: http://jinja.pocoo.org/docs/dev/templates/#super-blocks
 
 Obviously, the first option would require us to edit our custom block every time
@@ -141,4 +146,11 @@ config file (via the [markdown_extensions] config option) and some simple
 Markdown image links would work as well. However, that is beyond the scope of
 this example.
 
+**GOTCHA** The lightbox plugin allows navigating through an image gallery by
+left/right arrow keys. As this feature is turned on by default (see 
+[plugin_options]) it's in conflict with MkDocs's own arrow key navigation. The
+result is that if you hit the left or right arrow key when the gallery lightbox
+is shown you will effectively navigate to the next MkDocs page!
+
 [markdown_extensions]: http://www.mkdocs.org/user-guide/configuration/#markdown_extensions
+[plugin_options]: https://ashleydw.github.io/lightbox/
