@@ -12,9 +12,10 @@ To test this example, clone it and run `mkdocs serve` from the root directory.
 Then click on the image on the homepage in your browser.
 
 Note that this example requires at least **MkDocs version 0.17**. Earlier
-versions do not support most of the mechanisms used here. See [revision 915e1ac]
-(https://github.com/waylan/mkdocs-theme_dir-example/tree/915e1acf4fc912f9371bcabfc9e095fec9bf00ec)
-of this guide if you're working with MkDocs 0.16.
+versions do not support most of the mechanisms used here. See
+[revision 915e1ac] of this guide if you're working with MkDocs 0.16.
+
+[revision 915e1ac]: (https://github.com/waylan/mkdocs-theme_dir-example/tree/915e1acf4fc912f9371bcabfc9e095fec9bf00ec)
 
 It should also be noted that this example is using the Lightbox for Bootstrap
 Plugin as the `mkdocs` theme is built on Bootswatch, a Bootstrap wrapper. If you
